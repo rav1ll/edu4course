@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple stream</title>
+
+    <style>
+        canvas {
+            background-color: #afafaf;
+            height: 100px;
+            display: block;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+<!--             width: 100vw; -->
+
+</head>
+<body>
+
+<h1>Расчет простого потока</h1>
+<div>
+    <button onclick="start();">Запустить</button>
+    <button onclick="stop();">Остановить</button>
+
+</div>
+<br>
+
+<canvas id="road"></canvas>
+
+<script type="text/javascript">
+    let dt = 0.5; // 0.5 (сек)
+    let agents = []; // array of agents:  {V,a,x,t}
+
+    let T_global = 0; //
+
+    let V_max = 40 * 5 / 18; // 40 (км/ч)
+
+    let K_opt = 0.5; // (1/ 1000ч)
+    let D_opt = 1000; // K_opt * V_max * 18 / 5; // (м)  необходимо пересчитывать для каждого автомобиля исходя из его скорости
+    let D_min = 4; // (м)
+    let a_start = 2.78; // (м/с^2)
+    let a_stop = - 8; // (м/с^2)
+    let a_ex_stop = - 10; // (м/с^2)
+    let L_auto = 4.2; // (м)
+
+    let V_skop = 10 * 5 / 18; // (10 км/ч)
+
+    let N = 2000; // 2000 (автомобилей/ч) интенсивность потока
+
+    let L = 5000; // 5 км
+
+    let timerId = null;
+    let streamID = null;
+
+    let cnt_ = .0;
+
+    // Параметры рисования
+    let canvas = document.getElementById("road");
+    let ctx = canvas.getContext('2d');
+    console.log(canvas.width=document.documentElement.clientWidth);
+
+
+    let d_default = 1000; // default distance before car
+    let x_light = 200; // x coordinate of light
+    let light_counter = 0;
+    const colorList = [
+        {name: 'red', interval: 4000}, // ms
+        {name: 'green', interval: 4000} // ms
+    ];
+
+    // дистанция до предыдущего агента с учетом его длины в метрах
+
+
+    //считаем дистанцию до другого агента ( в зависимости от того, что находится перед агентом, машина или светофор)
+    function distance(index, light_counter) {
+        if (is_car_before_light(i)) {
+            d_before_light = distance_before_light(index, light_counter); // если горит зеленый, берем стандартную, если красный - считаем заново
+            d_before_car = distance_before_car(index); // если есть машины, считаем, отнимая длину машины + координаты следующей
+
+            return Math.min(d_before_light, d_before_car); // выводит меньшее - расстояние до машины или светофора
+        } else {
+            return distance_before_car(index); // если следующая машина уже проехала светофор
+        }
+    }
+
+    function distance_before_light(i, light_counter) {
+        if (colorList[light_counter].name === 'green') {
+            return d_default;
+        } else {
+            return x_light - agents[i].x;
+        }
+    }
+
+    function distance_before_car(i) {
+        if (i > 0) {
+            return agents[i-1].x - L_auto - agents[i].x;
+        } else {
+            return d_default;
+        }
+    }
+
+    function is_car_before_light(i) {
+        return agents[i].x <= x_light;
+    }
+    // КОНЕЦ
+
+    function calculate_step() {
+        let t_start = new Date().getTime();
+        for (let i = 0; i < agents.length; i++) {
+
+
+            // Реализация алгоритма
+            agents[i].t = agents[i].t + dt;
+
+            // анализируем скорость
+            if (agents[i].V >= 0) {
+                // подсчитаем изменившуюся за время delta t скорость
+                let v = agents[i].V + agents[i].a * dt;
+                if (v > 0) {
+                    agents[i].x = agents[i].x + agents[i].V * dt + agents[i].a * dt * dt / 2;
+                    agents[i].V = agents[i].V + agents[i].a * dt ;
+
+                    // В зависимости от скорости определим оптимальную дистанцию до следующего автомобиля
+                    D_opt = K_opt * agents[i].V * 18 / 5;
+                    if (D_opt < D_min) D_opt = D_min;
+                } else {
+                    // Для нулевой скорости оптимальная дистанция - минимальная дистанция
+                    agents[i].V = 0;
+                    agents[i].a = 0;
+                    D_opt = D_min;
+                }
+            } else {
+                console.log("----V");
+                agents[i].V = 0;
+                agents[i].a = 0;
+                continue;
+            }
+
+            let dist = distance(i, light_counter);
+
+
+            if (dist == D_opt) {agents[i].a = 0; continue; } // если оптимальная - едем дальше
+            
+            else if (dist > D_opt) {
+                if (agents[i].V < V_max) {agents[i].a = a_start; continue; } else {agents[i].a = 0; continue; }
+            } else if (dist > D_min) {
+                agents[i].a = a_stop; continue;
+            } else {
+                agents[i].a = a_ex_stop; continue;
+            }
+        }
+
+        plot();
+        let t_calc = new Date().getTime() - t_start;
+        console.log("step by " + t_calc);
+    }
+
+    // Создаем нового агента со скоростью равной скорости предыдущего агента
+    function make_agent() {
+        let v = V_max;
+        if (agents.length > 0) v = agents[agents.length - 1].V;
+
+        if (agents.length == 0 || agents[agents.length - 1].x > D_min) {
+            agents.push({V : v, a: 0, x: 0, t: T_global, o:false});
+        }
+
+    }
+
+
+    function changeColor() {
+        plot();
+        setTimeout(changeColor, colorList[light_counter].interval);
+        light_counter = (light_counter + 1) % colorList.length;
+    }
+
+
+    function start() {
+        timerId = setInterval(calculate_step, dt * 1000);
+        streamID = setInterval(make_agent, 1000 * 3600 / N ); // расчитываем интервал между автомобилями в миллисекундах
+
+        light_counter = 0;
+        changeColor();
+
+    }
+
+    function stop() {
+        clearTimeout(timerId);
+        clearTimeout(streamID);
+    }
+
+function plot() {
+    ctx.clearRect(0,0, canvas.width, 200);
+
+
+    // Light
+    ctx.fillStyle = "#333333";
+
+    const radius = 4;
+    const centerX = x_light;
+    const centerY = 40;
+
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+    ctx.fillStyle = colorList[light_counter].name
+    ctx.fill();
+    // КОНЕЦ
+
+    // Cars
+    ctx.fillStyle = "#ff6900";
+    for (let i = 0; i < agents.length; i++) {
+        ctx.fillRect(agents[i].x,100,16,10);
+    }
+}
+
+
+</script>
+
+
+</body>
+</html>
+
