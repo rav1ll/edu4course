@@ -42,7 +42,7 @@ sorted_index = dict(sorted(inverted_index.items(), key=lambda x: x[0]))
 def boolean_search(query, sorted_index):
     query = query.split()
     result = set()
-
+    res = []
     all_tokens = set().union(*[set(files) for files in sorted_index.values()])
     for i in range(0, len(query)):
         word = query[i]
@@ -78,7 +78,7 @@ def boolean_search(query, sorted_index):
         if i + 1 == len(query):
             res = list(result)
             for ind in range(len(res)):
-                res[ind] = res[ind][10:-4:]
+                res[ind] = int(res[ind][15:-4:])
 
     return sorted(res)
 
