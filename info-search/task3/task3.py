@@ -29,10 +29,14 @@ for term, file_names in inverted_index.items():
 # Сортируем индекс по алфавиту
 sorted_index = dict(sorted(inverted_index.items(), key=lambda x: x[0]))
 
+
 # # Сохраняем индекс в файл
 # with open('inverted_index.json', 'w',encoding='utf-8') as file:
 #     json.dump(sorted_index, file, indent=4, ensure_ascii=False,)
 # print('inverted index saved')
+
+
+
 
 
 def boolean_search(query, sorted_index):
@@ -65,16 +69,18 @@ def boolean_search(query, sorted_index):
 
             next_word = query[i + 1]
             if next_word[0] == '!':
-
                 set_with_next_word_pages = set(sorted_index.get(next_word[1::], []))
                 all_pages_without_next_word_pages = all_tokens.difference(set_with_next_word_pages)
                 result = result.union(all_pages_without_next_word_pages)
             else:
                 result = result.union(sorted_index.get(next_word, []))
-        if i == len(query):
-            break
 
-    return list(result)
+        if i + 1 == len(query):
+            res = list(result)
+            for ind in range(len(res)):
+                res[ind] = res[ind][10:-4:]
+
+    return sorted(res)
 
 
 # Примеры булевых запросов
@@ -87,4 +93,4 @@ queries = [
 ]
 
 for query in queries:
-    print(f"Результат для запроса '{query}': \n {boolean_search(query, sorted_index)}")
+    print(f"Результат для запроса '{query}': \n {boolean_search(query, sorted_index)} \n")
