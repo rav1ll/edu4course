@@ -4,14 +4,13 @@ from nltk.corpus import stopwords
 from pymorphy2 import MorphAnalyzer
 import os
 
-
 from sklearn.metrics.pairwise import cosine_similarity
 from collections import Counter
 
 # # Загрузка стоп-слов для русского языка
-nltk.download('stopwords')
-nltk.download('punkt')
-stop_words = set(stopwords.words('russian'))
+# nltk.download('stopwords')
+# nltk.download('punkt')
+# stop_words = set(stopwords.words('russian'))
 # Инициализация pymorphy2
 morph = MorphAnalyzer()
 
@@ -19,7 +18,7 @@ morph = MorphAnalyzer()
 def query_to_vector(query, idf):
     tokens = nltk.word_tokenize(query.lower())  # Токенизация и приведение к нижнему регистру
     lemmatized_tokens = [morph.parse(token)[0].normal_form for token in tokens]  # Лемматизация
-    words = [word for word in lemmatized_tokens if word.strip() and word not in [' ', '\n']]
+    words = [word for word in lemmatized_tokens if word.strip()]
 
     word_count = Counter(words)
 
@@ -33,7 +32,6 @@ def query_to_vector(query, idf):
         if not word_idf:
             word_idf = 0
         query_vector[word] = word_tf * word_idf
-
     return query_vector
 
 
@@ -47,12 +45,11 @@ def vector_search(queries, tf_idf, idf, top_n):
             for doc, doc_vector in tf_idf.items():
                 scores[doc] = compute_cosine_similarity(doc_vector, query_vector)
             sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+
             txt_file.write(f"'{query}'\n")
             for doc, score in sorted_scores[:top_n]:  # Меняйте N для разного количества документов
-
-                res = f"{doc} : {round(score, 7)}\n"
+                res = f"{doc} : {round(score, 6)}\n"
                 txt_file.write(res)
-                results.append({"Query": query, "Document": doc, "Score": score})
 
             txt_file.write("\n")
 
