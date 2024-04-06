@@ -1,5 +1,4 @@
-Запрос: 'ошибкаааааа'
-processed_page_0.txt : 0.0
+ошибкааааааprocessed_page_0.txt : 0.0
 processed_page_1.txt : 0.0
 processed_page_10.txt : 0.0
 processed_page_100.txt : 0.0
@@ -12,8 +11,7 @@ processed_page_16.txt : 0.0
 processed_page_17.txt : 0.0
 processed_page_18.txt : 0.0
 
-Запрос: 'ошибкаааааа племя'
-processed_page_6.txt : 0.4855382
+ошибкаааааа племяprocessed_page_6.txt : 0.4855382
 processed_page_45.txt : 0.0647714
 processed_page_24.txt : 0.0518263
 processed_page_38.txt : 0.0392512
@@ -26,8 +24,7 @@ processed_page_1.txt : 0.0
 processed_page_10.txt : 0.0
 processed_page_100.txt : 0.0
 
-Запрос: 'ошибкаааааа племя французский'
-processed_page_6.txt : 0.3775655
+ошибкаааааа племя французскийprocessed_page_6.txt : 0.3775655
 processed_page_93.txt : 0.0600844
 processed_page_45.txt : 0.0503677
 processed_page_24.txt : 0.0403013
@@ -39,4 +36,43 @@ processed_page_37.txt : 0.0213331
 processed_page_76.txt : 0.0199693
 processed_page_5.txt : 0.0179922
 processed_page_85.txt : 0.0140373
+
+древневосточныйprocessed_page_27.txt : 0.0149083
+processed_page_0.txt : 0.0
+processed_page_1.txt : 0.0
+processed_page_10.txt : 0.0
+processed_page_100.txt : 0.0
+processed_page_11.txt : 0.0
+processed_page_12.txt : 0.0
+processed_page_13.txt : 0.0
+processed_page_14.txt : 0.0
+processed_page_15.txt : 0.0
+processed_page_16.txt : 0.0
+processed_page_17.txt : 0.0
+
+древневосточный послесловиеprocessed_page_88.txt : 0.0467537
+processed_page_13.txt : 0.0318431
+processed_page_15.txt : 0.017341
+processed_page_27.txt : 0.0122156
+processed_page_9.txt : 0.0113734
+processed_page_0.txt : 0.0
+processed_page_1.txt : 0.0
+processed_page_10.txt : 0.0
+processed_page_100.txt : 0.0
+processed_page_11.txt : 0.0
+processed_page_12.txt : 0.0
+processed_page_14.txt : 0.0
+
+древневосточный послесловие правилоprocessed_page_88.txt : 0.0422496
+processed_page_13.txt : 0.0287754
+processed_page_15.txt : 0.0156704
+processed_page_24.txt : 0.0155735
+processed_page_39.txt : 0.0152434
+processed_page_98.txt : 0.0112898
+processed_page_27.txt : 0.0110388
+processed_page_53.txt : 0.0104749
+processed_page_9.txt : 0.0102777
+processed_page_41.txt : 0.0078053
+processed_page_87.txt : 0.0075441
+processed_page_11.txt : 0.0058326
 

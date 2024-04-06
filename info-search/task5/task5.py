@@ -40,8 +40,6 @@ def query_to_vector(query, idf):
     return query_vector
 
 
-
-
 def vector_search(queries, tf_idf, idf, top_n):
     results = []
     with open('../task5/out.txt', 'w') as txt_file:
@@ -53,7 +51,7 @@ def vector_search(queries, tf_idf, idf, top_n):
                 scores[doc] = compute_cosine_similarity(doc_vector, query_vector)
 
             sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
-            txt_file.write(f"Запрос: '{query}'\n")
+            txt_file.write(query)
             for doc, score in sorted_scores[:top_n]:  # Меняйте N для разного количества документов
 
                 res = f"{doc} : {round(score, 7)}\n"
@@ -62,15 +60,14 @@ def vector_search(queries, tf_idf, idf, top_n):
 
             txt_file.write("\n")
 
+
 def compute_cosine_similarity(doc_vector, query_vector):
     # создаем векторы со всеми словами из документа и запроса + вектор слов документа
     all_words = list(set(doc_vector.keys()).union(set(query_vector.keys())))
     doc_vector = [doc_vector.get(word, 0) for word in all_words]
     query_vector = [query_vector.get(word, 0) for word in all_words]
-
     res = cosine_similarity([doc_vector], [query_vector])[0][0]
     return res
-
 
 
 # кол-во документов в конечном рейтинге
@@ -92,7 +89,8 @@ if __name__ == '__main__':
         tf_idf = json.load(f)
 
     # Предполагаем, что tf_idf и idf уже вычислены, и total_docs - общее количество документов
-    queries = ["ошибкаааааа", "ошибкаааааа племя", "ошибкаааааа племя французский"]
+    queries = ["ошибкаааааа", "ошибкаааааа племя", "ошибкаааааа племя французский",
+               "древневосточный", "древневосточный послесловие", "древневосточный послесловие правило"]
 
     vector_search(queries, tf_idf, idf, top_n)
     print('поиск выполнен')
