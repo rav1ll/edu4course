@@ -49,7 +49,6 @@ def vector_search(queries, tf_idf, idf, top_n):
 
             for doc, doc_vector in tf_idf.items():
                 scores[doc] = compute_cosine_similarity(doc_vector, query_vector)
-
             sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
             txt_file.write(f"'{query}'\n")
             for doc, score in sorted_scores[:top_n]:  # Меняйте N для разного количества документов

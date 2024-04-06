@@ -44,7 +44,10 @@ def boolean_search(query, sorted_index):
     for i in range(0, len(query)):
         word = query[i]
         if i == 0:
-            result = set(sorted_index[word])
+            if word[0] == '!':
+                result = all_tokens.difference(set(sorted_index[word[1::]]))
+            else:
+                result = set(sorted_index[word])
 
         if word == '&':
             next_word = query[i + 1]
@@ -86,4 +89,3 @@ queries = [
 
 for query in queries:
     print(f"Результат для запроса '{query}': {boolean_search(query, sorted_index)}")
-
