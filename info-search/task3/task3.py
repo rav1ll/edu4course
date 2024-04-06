@@ -28,6 +28,7 @@ for term, file_names in inverted_index.items():
 
 # Сортируем индекс по алфавиту
 sorted_index = dict(sorted(inverted_index.items(), key=lambda x: x[0]))
+
 # # Сохраняем индекс в файл
 # with open('inverted_index.json', 'w',encoding='utf-8') as file:
 #     json.dump(sorted_index, file, indent=4, ensure_ascii=False,)
@@ -86,4 +87,4 @@ queries = [
 ]
 
 for query in queries:
-    print(f"Результат для запроса '{query}': \n {boolean_search(query, sorted_index)} \n")
+    print(f"Результат для запроса '{query}': \n {boolean_search(query, sorted_index)}")

@@ -1,20 +1,17 @@
 import json
-import os
 import nltk
 from nltk.corpus import stopwords
 from pymorphy2 import MorphAnalyzer
 import os
 
-import pandas as pd
 
 from sklearn.metrics.pairwise import cosine_similarity
 from collections import Counter
-import math
 
 # # Загрузка стоп-слов для русского языка
-# nltk.download('stopwords')
-# nltk.download('punkt')
-# stop_words = set(stopwords.words('russian'))
+nltk.download('stopwords')
+nltk.download('punkt')
+stop_words = set(stopwords.words('russian'))
 # Инициализация pymorphy2
 morph = MorphAnalyzer()
 
