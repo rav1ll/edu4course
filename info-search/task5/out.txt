@@ -1,84 +1,14 @@
-'ошибкаааааа'
-processed_page_0.txt : 0.0
+'племя'
+processed_page_6.txt : 0.485214
+processed_page_45.txt : 0.06438
+processed_page_24.txt : 0.051425
+processed_page_38.txt : 0.03897
+processed_page_37.txt : 0.026976
+processed_page_76.txt : 0.025549
+processed_page_75.txt : 0.016863
+processed_page_87.txt : 0.016618
 processed_page_1.txt : 0.0
 processed_page_10.txt : 0.0
 processed_page_100.txt : 0.0
 processed_page_11.txt : 0.0
-processed_page_12.txt : 0.0
-processed_page_13.txt : 0.0
-processed_page_14.txt : 0.0
-processed_page_15.txt : 0.0
-processed_page_16.txt : 0.0
-processed_page_17.txt : 0.0
-processed_page_18.txt : 0.0
-
-'ошибкаааааа племя'
-processed_page_6.txt : 0.485538
-processed_page_45.txt : 0.064771
-processed_page_24.txt : 0.051826
-processed_page_38.txt : 0.039251
-processed_page_37.txt : 0.027434
-processed_page_76.txt : 0.02568
-processed_page_75.txt : 0.016933
-processed_page_87.txt : 0.016748
-processed_page_0.txt : 0.0
-processed_page_1.txt : 0.0
-processed_page_10.txt : 0.0
-processed_page_100.txt : 0.0
-
-'ошибкаааааа племя французский'
-processed_page_6.txt : 0.377566
-processed_page_93.txt : 0.060084
-processed_page_45.txt : 0.050368
-processed_page_24.txt : 0.040301
-processed_page_38.txt : 0.030523
-processed_page_97.txt : 0.029381
-processed_page_56.txt : 0.028741
-processed_page_4.txt : 0.024975
-processed_page_37.txt : 0.021333
-processed_page_76.txt : 0.019969
-processed_page_5.txt : 0.017992
-processed_page_85.txt : 0.014037
-
-'древневосточный'
-processed_page_27.txt : 0.014908
-processed_page_0.txt : 0.0
-processed_page_1.txt : 0.0
-processed_page_10.txt : 0.0
-processed_page_100.txt : 0.0
-processed_page_11.txt : 0.0
-processed_page_12.txt : 0.0
-processed_page_13.txt : 0.0
-processed_page_14.txt : 0.0
-processed_page_15.txt : 0.0
-processed_page_16.txt : 0.0
-processed_page_17.txt : 0.0
-
-'древневосточный послесловие'
-processed_page_88.txt : 0.046754
-processed_page_13.txt : 0.031843
-processed_page_15.txt : 0.017341
-processed_page_27.txt : 0.012216
-processed_page_9.txt : 0.011373
-processed_page_0.txt : 0.0
-processed_page_1.txt : 0.0
-processed_page_10.txt : 0.0
-processed_page_100.txt : 0.0
-processed_page_11.txt : 0.0
-processed_page_12.txt : 0.0
-processed_page_14.txt : 0.0
-
-'древневосточный послесловие правило'
-processed_page_88.txt : 0.04225
-processed_page_13.txt : 0.028775
-processed_page_15.txt : 0.01567
-processed_page_24.txt : 0.015573
-processed_page_39.txt : 0.015243
-processed_page_98.txt : 0.01129
-processed_page_27.txt : 0.011039
-processed_page_53.txt : 0.010475
-processed_page_9.txt : 0.010278
-processed_page_41.txt : 0.007805
-processed_page_87.txt : 0.007544
-processed_page_11.txt : 0.005833
 

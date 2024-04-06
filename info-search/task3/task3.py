@@ -36,9 +36,6 @@ sorted_index = dict(sorted(inverted_index.items(), key=lambda x: x[0]))
 # print('inverted index saved')
 
 
-
-
-
 def boolean_search(query, sorted_index):
     query = query.split()
     result = set()
