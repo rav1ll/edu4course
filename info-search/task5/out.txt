@@ -1,4 +1,18 @@
-'племя'
+'ошибкаааааа'
+processed_page_1.txt : 0.0
+processed_page_10.txt : 0.0
+processed_page_100.txt : 0.0
+processed_page_11.txt : 0.0
+processed_page_12.txt : 0.0
+processed_page_13.txt : 0.0
+processed_page_14.txt : 0.0
+processed_page_15.txt : 0.0
+processed_page_16.txt : 0.0
+processed_page_17.txt : 0.0
+processed_page_18.txt : 0.0
+processed_page_19.txt : 0.0
+
+'ошибкаааааа племя'
 processed_page_6.txt : 0.485214
 processed_page_45.txt : 0.06438
 processed_page_24.txt : 0.051425
@@ -11,4 +25,60 @@ processed_page_1.txt : 0.0
 processed_page_10.txt : 0.0
 processed_page_100.txt : 0.0
 processed_page_11.txt : 0.0
+
+'ошибкаааааа племя французский'
+processed_page_6.txt : 0.377452
+processed_page_93.txt : 0.059149
+processed_page_45.txt : 0.050082
+processed_page_24.txt : 0.040004
+processed_page_38.txt : 0.030315
+processed_page_97.txt : 0.029101
+processed_page_3.txt : 0.02909
+processed_page_56.txt : 0.028567
+processed_page_4.txt : 0.024724
+processed_page_37.txt : 0.020985
+processed_page_76.txt : 0.019875
+processed_page_5.txt : 0.017816
+
+'древневосточный'
+processed_page_27.txt : 0.014919
+processed_page_1.txt : 0.0
+processed_page_10.txt : 0.0
+processed_page_100.txt : 0.0
+processed_page_11.txt : 0.0
+processed_page_12.txt : 0.0
+processed_page_13.txt : 0.0
+processed_page_14.txt : 0.0
+processed_page_15.txt : 0.0
+processed_page_16.txt : 0.0
+processed_page_17.txt : 0.0
+processed_page_18.txt : 0.0
+
+'древневосточный послесловие'
+processed_page_88.txt : 0.046727
+processed_page_13.txt : 0.031639
+processed_page_15.txt : 0.017222
+processed_page_27.txt : 0.012228
+processed_page_9.txt : 0.011077
+processed_page_1.txt : 0.0
+processed_page_10.txt : 0.0
+processed_page_100.txt : 0.0
+processed_page_11.txt : 0.0
+processed_page_12.txt : 0.0
+processed_page_14.txt : 0.0
+processed_page_16.txt : 0.0
+
+'древневосточный послесловие правило'
+processed_page_88.txt : 0.042235
+processed_page_13.txt : 0.028598
+processed_page_15.txt : 0.015567
+processed_page_24.txt : 0.015436
+processed_page_39.txt : 0.015221
+processed_page_98.txt : 0.011113
+processed_page_27.txt : 0.011053
+processed_page_53.txt : 0.010452
+processed_page_9.txt : 0.010012
+processed_page_87.txt : 0.007491
+processed_page_41.txt : 0.007432
+processed_page_11.txt : 0.0058
 
