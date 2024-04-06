@@ -28,8 +28,6 @@ for term, file_names in inverted_index.items():
 
 # Сортируем индекс по алфавиту
 sorted_index = dict(sorted(inverted_index.items(), key=lambda x: x[0]))
-
-
 # # Сохраняем индекс в файл
 # with open('inverted_index.json', 'w',encoding='utf-8') as file:
 #     json.dump(sorted_index, file, indent=4, ensure_ascii=False,)
@@ -80,12 +78,12 @@ def boolean_search(query, sorted_index):
 
 # Примеры булевых запросов
 queries = [
-    'later & kingdom | world',
-    'later & !kingdom | !world',
-    'later | kingdom | world',
-    'later | !kingdom | !world',
-    'later & kingdom & world'
+    'жанр & публиковать | животное',
+    'жанр & !публиковать | !животное',
+    'жанр | публиковать | животное',
+    'жанр | !публиковать | !животное',
+    'жанр & публиковать & животное'
 ]
 
 for query in queries:
-    print(f"Результат для запроса '{query}': {boolean_search(query, sorted_index)}")
+    print(f"Результат для запроса '{query}': \n {boolean_search(query, sorted_index)} \n")
